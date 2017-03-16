@@ -1,0 +1,9 @@
+  <ng-map zoom="15" center=currentPos>
+    <div ng-repeat="marker in markers track by marker.title">
+      <custom-marker class="markerCss" id="{{marker.title}}" position="{{marker.location}}" ng-click="markerInfo(marker.title)">
+        <div class="imageClass">
+          <img ng-src="{{marker.icon}}">
+        </div>
+      </custom-marker>
+    </div>  
+  </ng-map>
