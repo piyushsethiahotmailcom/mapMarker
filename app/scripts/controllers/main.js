@@ -15,7 +15,6 @@ angular.module('ang1App')
   	var options = {
         enableHighAccuracy: true
     };
-
 	navigator.geolocation.getCurrentPosition(function(pos) {
         _s.currentPos.push(pos.coords.latitude);
         _s.currentPos.push(pos.coords.longitude);
@@ -37,15 +36,144 @@ angular.module('ang1App')
 		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
 		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
 		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #4',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #5',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #6',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #7',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #8',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #9',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #10',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #11',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #12',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #13',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #14',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #15',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #16',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #17',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #18',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    },
+		    {
+		        'title' : 'Location #19',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
+		    }, 
+		    {
+		        'title' : 'Location #20',
+		        'content' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a viverra magna',
+		        'location'  : [_s.currentPos[0] + (Math.random()/100), _s.currentPos[1] + (Math.random()/100)],
+		        'icon' : iconUrl
 		    }
 		];
-		console.log(_s.markers);  
+		console.log(_s.markers);
+		
+		NgMap.getMap().then(function (map) {
+	        _s.map = map;
+			_s.initMarkerClusterer();
+	    });
+
+	    _s.initMarkerClusterer = function() {
+	      var markers = _s.markers.map(function(city) {
+	        return _s.createMarkerForCity(city);
+	      });
+	      var mcOptions = {
+	        imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+	      };
+	      return new MarkerClusterer(_s.map, markers, mcOptions);
+	    };
+
+		_s.createMarkerForCity = function(city) {
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(city.pos[0], city.pos[1]),
+				title: city.name
+			});
+		  	google.maps.event.addListener(marker, 'click', function() {
+				_s.selectedCity = city;
+				_s.map.showInfoWindow('myInfoWindow', this);
+			});
+		};  
     }, 
     function(error) {                    
         window.alert('Unable to get location: ' + error.message);
     }, options);
 
-		
+	    
+
     /*var markers = [];
 
     for (var i=0; i<20; i++) {

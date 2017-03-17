@@ -18,8 +18,10 @@ angular
     'ngTouch',
     'ngMap'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $qProvider) {
     $locationProvider.html5Mode(false).hashPrefix("");
+    $qProvider.errorOnUnhandledRejections(false);
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
