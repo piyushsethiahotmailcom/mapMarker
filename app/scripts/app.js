@@ -33,6 +33,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/mapPage', {
+        templateUrl: 'views/mappage.html',
+        controller: 'MappageCtrl',
+        controllerAs: 'mapPage'
+      })
       .otherwise({
         redirectTo: '/'
       });

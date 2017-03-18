@@ -155,9 +155,24 @@ body {
     height:40px;
     margin:5px;
     text-align:center;
-    margin-left:6px;
+    margin-left:10px;
     margin-top:8px;
     transform: rotate(45deg);
     border-radius:50%;
     border:2px solid white;
+}
+
+
+
+
+
+.gmnoprint{
+  display: inline-block !important;
+  height: 52px !important;
+  width: 52px !important;
+}
+.gmnoprint img{
+  display: inline-block !important;
+  height: 32px !important;
+  width: 32px !important; 
 }
