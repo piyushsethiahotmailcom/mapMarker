@@ -38,6 +38,16 @@ angular
         controller: 'MappageCtrl',
         controllerAs: 'mapPage'
       })
+      .when('/mcEx', {
+        templateUrl: 'views/mcex.html',
+        controller: 'McexCtrl',
+        controllerAs: 'mcEx'
+      })
+      .when('/members', {
+        templateUrl: 'views/members.html',
+        controller: 'MembersCtrl',
+        controllerAs: 'members'
+      })
       .otherwise({
         redirectTo: '/'
       });

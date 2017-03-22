@@ -140,7 +140,32 @@ angular.module('ang1App')
 		        'icon' : iconUrl
 		    }
 		];
-		console.log(_s.markers);  
+		console.log(_s.markers);
+		NgMap.getMap().then(function (map) {
+	        _s.map = map;
+			_s.initMarkerClusterer();
+	    });
+
+	    _s.initMarkerClusterer = function() {
+	      var markers = _s.markers.map(function(city) {
+	        return _s.createMarkerForCity(city);
+	      });
+	      var mcOptions = {
+	        imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m'
+	      };
+	      return new MarkerClusterer(_s.map, markers, mcOptions);
+	    };
+
+		_s.createMarkerForCity = function(city) {
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(city.pos[0], city.pos[1]),
+				title: city.name
+			});
+		  	google.maps.event.addListener(marker, 'click', function() {
+				_s.selectedCity = city;
+				_s.map.showInfoWindow('myInfoWindow', this);
+			});
+		};  
     }, 
     function(error) {                    
         window.alert('Unable to get location: ' + error.message);

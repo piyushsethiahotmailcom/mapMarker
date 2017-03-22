@@ -1,0 +1,78 @@
+<div class="header">
+	<div class="title">
+		Members
+	</div>
+	<div class="searchBox">
+		<input type="text" placeholder="Search fro Members, tasks, Groups..." name="">
+	</div>
+	<div class="userOption">
+		<span class="uploadButtonCss">Upload Data</span>
+		<div class="helpButtonCss">Help
+			<span class="glyphicon glyphicon-menu-down"></span>
+		</div>
+		<div class="UserProfileCss">
+			<div class="imgClass">
+				<img src="/images/user.png">
+			</div>
+			<!-- <span class="glyphicon glyphicon-menu-down"></span> -->
+		</div>
+	</div>
+</div>
+<div class="functionOption">
+	<button class="btn btn-primary">Function</button>
+	<button class="btn btn-primary">Regions</button>
+</div>
+<div class="row memberMetaNumbers">
+	<div class="col-xs-8">
+		<div class="col-xs-2">
+			<div class="progressBarCss">
+				<div class="progress-pie-chart" data-percent="43">
+				  <div class="ppc-progress">
+				    <div class="ppc-progress-fill"></div>
+				  </div>
+				  <div class="ppc-percents">
+				    <div class="pcc-percents-wrapper">
+				      <span>%</span>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div class="progressBarInfo">
+				Task Completion
+			</div>
+		</div>
+		<div class="col-xs-10">
+			<div class="xyz" ng-repeat="tasks in taskMetadata">
+				<div class="metaDataInfo">
+					<div class="circleCss">{{tasks.value}}</div>
+					<div class="taskLabel">{{tasks.label}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-4">
+		
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-6"></div>
+	<div class="col-xs-6"></div>
+</div>
+<div class="row">
+	<div class="tableCss">
+		<table>
+			<tbody>
+				<tr>
+				<th><input type="checkbox" name=""></th>
+				<th>Name</th>
+				<th>Role</th>
+				<th>Contact</th>
+				<th>Last Activity</th>
+				<th>Hours Worked</th>
+				<th>Task Overview</th>
+				<th>Date added</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
