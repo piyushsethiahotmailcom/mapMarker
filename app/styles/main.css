@@ -78,35 +78,37 @@
     border:2px solid white;
 }
 
-
+.forHover:hover{
+  opacity: 0.1;
+}
 
 #map-container {
-        padding: 6px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #ccc #ccc #999 #ccc;
-        -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-        -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-        box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-        width: 800px;
-      }
-      #map {
-        width: 800px;
-        height: 400px;
-      }
-      #actions {
-        list-style: none;
-        padding: 0;
-      }
-      #inline-actions {
-        padding-top: 10px;
-      }
-      .item {
-        margin-left: 20px;
-      }
-      img[src^='http://www.google.com/mapfiles/marker.png?i=']{
-        opacity: 0.5
-      }
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  width: 800px;
+}
+#map {
+  width: 800px;
+  height: 400px;
+}
+#actions {
+  list-style: none;
+  padding: 0;
+}
+#inline-actions {
+  padding-top: 10px;
+}
+.item {
+  margin-left: 20px;
+}
+img[src^='http://www.google.com/mapfiles/marker.png?i=']{
+  opacity: 0.5
+}
 .customMarkerCluster{
   color:"white";
   border-radius:50%;
@@ -131,24 +133,47 @@
   color: #586888;
 }
 .gm-style-iw {
-  min-width: 200px !important;
+  min-width: 150px !important;
   max-width: 350px !important;
   top: 30px !important;
-  left: 5px !important;
-  background-color: white;
+  left: 10px !important;
+  background-color: #434343;
   border: 1px solid #434343;
   border-radius: 5px;
   z-index: 999;
-  height:auto;
+  height: auto;
   padding:5px;
-  padding-top: 10px;
+  padding-bottom: 0;
+  padding-top: 8px;
   display:inline-block;
 }
+
+#iw-container .iw-title {
+  font-weight: bold;
+  padding: 2px 0;
+  background-color: #434343;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+#iw-container .iw-bodyData{
+  color: #9A99A0;
+  font-size: 12px;
+  font-weight: bold;
+}
+#iw-container2{
+  max-height: 250px;
+  background-color: white;
+  overflow-y: auto;
+}
+
 .mainDiv{
-  display:inline-block;
-  height:auto;
+  display:-webkit-box;
+  min-height:50px;
   width:200px;
-  margin-bottom: 10px; 
+  padding: 3px;
+  padding-bottom: 5px;
+  background-color: white;
   line-height: 20px;
 }
 .img{
@@ -165,7 +190,7 @@
   width: 43px;
 }
 .info{
-  padding-left: 10px;
+  padding-left: 5px;
   display:inline-block;
   text-overflow: ellipsis;
 }
@@ -175,33 +200,10 @@
   font-weight:bold;
   text-align:justify;
 }
-#iw-container .iw-title {
-  font-weight: bold;
-  padding: 10px;
-  background-color: #434343;
-  color: white;
-  margin: 0;
-  text-align: center;
+.role{
+  text-align: justify;
 }
-#iw-container .iw-content {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 400;
-  margin-right: 1px;
-  padding: 15px 5px 20px 15px;
-  max-height: 140px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.iw-content img {
-  float: right;
-  margin: 0 5px 5px 10px; 
-}
-.iw-subTitle {
-  font-size: 16px;
-  font-weight: 700;
-  padding: 5px 0;
-}
+
 /*map marker css ends here*/
 
 /*member page css*/

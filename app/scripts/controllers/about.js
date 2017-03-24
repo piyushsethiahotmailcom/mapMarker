@@ -121,7 +121,7 @@ angular.module('ang1App')
             "id": "118e2390-6efb-4ca5-960c-736408738378", 
             "name": "Bishwash Kumara", 
             "same_location_id": "118e2390-6efb", 
-            "avatar": "/images/marker.png", 
+            "avatar": "./images/user.png",
             "user_roles": [
                 {
                     "group": "Sales", 
@@ -152,13 +152,16 @@ angular.module('ang1App')
                 }
             ], 
             "status": "INACTIVE", 
-            "last_location": null
+            "last_location": [
+                12.9833 + (Math.random() / 100), 
+                77.5833 + (Math.random() / 100)
+            ]
         }, 
         {
             "id": "118e2390-6efb-4ca5-960c-736408738378", 
             "name": "Tania Saha", 
             "same_location_id": "118e2390-6efb", 
-            "avatar": "/images/marker.png",
+            "avatar": "./images/user.png",
             "user_roles": [
                 {
                     "group": "Sales", 
@@ -190,13 +193,16 @@ angular.module('ang1App')
                 }
             ], 
             "status": "INACTIVE", 
-            "last_location": null
+            "last_location": [
+                12.9833 + (Math.random() / 100), 
+                77.5833 + (Math.random() / 100)
+            ]
         }, 
         {
             "id": "118e2390-6efb-4ca5-960c-736408738378", 
             "name": "Srinivas Manjunathan", 
             "same_location_id": "118e2390-6efb", 
-            "avatar": "/images/marker.png",
+            "avatar": "./images/user.png",
             "user_roles": [
                 {
                     "group": "Sales", 
@@ -254,6 +260,7 @@ angular.module('ang1App')
     var repeatingIds = [];
     var sameObj = [];
     var push = false;
+    var bounce = true;
     sameObj.push([]);
     for(var j=0; j<locations2.length; j++){
     	for(var k = j+1; k< locations2.length; k++){
@@ -268,18 +275,10 @@ angular.module('ang1App')
     for(j =0; j<repeatingIds.length; j++){
     	push = false;
     	for(k=0; k<locations2.length; k++){
-    		if (locations2[k].last_location) {
-    			console.log(locations2[k].same_location_id == repeatingIds[j]);
-	    		if (locations2[k].same_location_id == repeatingIds[j]) {
-	    			sameObj[j].push(locations2[k]);
-	    			push = true;
-	    			locations2.splice(k,1);
-	    			console.log(k);
-	    			k--;
-	    		}
-    		}
-    		else{
+    		if (locations2[k].same_location_id == repeatingIds[j]) {
+    			sameObj[j].push(locations2[k]);
     			locations2.splice(k,1);
+    			k--;
     		}
     	}
     	if (push && sameObj.length<repeatingIds.length) {
@@ -318,13 +317,12 @@ angular.module('ang1App')
 	         		maxlng = (sameObj[j][k].last_location[1] > maxlng) ? sameObj[j][k].last_location[0] : maxlng;
 	         	}
 	    	}
-	    	console.log(sameObj[j]);
 		    var lat = maxlat - ((maxlat - minlat) / 2);
 		    var lng = maxlng - ((maxlng - minlng) / 2);
 		    centerPoints = [lat,lng];
 	    	data = {
 	    		last_location : centerPoints,
-	    		avatar : sameObj[j].avatar,
+	    		avatar : sameObj[j].avatar?sameObj[j].avatar:"./images/groups.png",
 	    		data : sameObj[j],
 	    		clubbedData: true
 	    	};
@@ -333,10 +331,8 @@ angular.module('ang1App')
 	    }
 	}
 	center();
-	console.log(locations2);
 	var currentPos = [12.9833, 77.5833];
     var icon = {
-      //url: "data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Capa_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2252px%22%20height%3D%2252px%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22enable-background%3Anew%200%200%20512%20512%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%3E%3Cpath%20d%3D%22M256%2C0C167.641%2C0%2C96%2C71.625%2C96%2C160c0%2C24.75%2C5.625%2C48.219%2C15.672%2C69.125C112.234%2C230.313%2C256%2C512%2C256%2C512l142.594-279.375%20%20%20C409.719%2C210.844%2C416%2C186.156%2C416%2C160C416%2C71.625%2C344.375%2C0%2C256%2C0z%20M256%2C256c-53.016%2C0-96-43-96-96s42.984-96%2C96-96%20%20%20c53%2C0%2C96%2C43%2C96%2C96S309%2C256%2C256%2C256z%22%20style%3D%22fill%3A%20rgb%28145%2C%20220%2C%2090%29%3B%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E", // url
       url: "./images/marker.png", // url
       scaledSize: new google.maps.Size(40, 50), // scaled size
       origin: new google.maps.Point(0, 0), // origin
@@ -344,21 +340,43 @@ angular.module('ang1App')
     };
     var name = "xyz";
     var tooltip = '';
+    var contentString = '';
     var des = "ksjdhf asdjfjhas "
     var urlss = './images/user';
+    var agRoles = [];
+    var finalContent = '';
     function setContent(index){
     	if (locations2[index].clubbedData) {
-		    for(j=0;j<locations2[index];j++){
-		    	tooltip +='<div id="iw-container"><div class="mainDiv"><div class="img"><img src="'+urlss+j+'.png"/></div><div class="info">'+
-		    	'<p class="name">'+name+j+'</p><p class="role">'+des+'|'+j+'</p></div></div></div>';
+    		$(".gm-style-iw").css({"background-color":"white !important;"});
+    		finalContent ='';
+    		tooltip = '<div id="iw-container2">';
+		    for(j=0;j<locations2[index].data.length;j++){
+		    	for(k=0;k<locations2[index].data[j].user_roles.length;k++){
+	    			agRoles.push(locations2[index].data[j].user_roles[k].roles.join(' | '));
+		    	}
+		    	tooltip += '<div class="mainDiv">'+
+		    	'<div class="img">'+
+		    	'<img src="'+locations2[index].data[j].avatar+'"/>'+
+		    	'</div>'+
+		    	'<div class="info">'+
+		    	'<p class="name">'+locations2[index].data[j].name+'</p>'+
+		    	'<p class="role">'+agRoles[j]+'</p>'+
+		    	'</div>'+
+		    	'</div>';
 		    }
+		    $("#iw-container").parent().css({'background-color':'white !important'});
+		    tooltip += '</div>';
+		    finalContent = tooltip;
+    	}
+    	else{
+    		finalContent ='';
+    		finalContent = '<div id="iw-container">' + 
+    		'<div class="iw-title">'+locations2[index].name + '</div>' + 
+    		'<div class="iw-bodyData">'+'last Activity : 10:30AM'+ '</div>' +
+    		'</div>';
     	}
     }
-    var contentString = '<div id="iw-container">' + '<div class="iw-title">'+name + '</div>' + '</div>';
-    var infowindow = new google.maps.InfoWindow({
-		content: tooltip,
-		maxWidth: 350
-	});
+    var infowindow = new google.maps.InfoWindow();
 	var mcOptions = {gridSize: 50, maxZoom: 15, cssClass:'customMarkerCluster',
 	imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'
 	};
@@ -385,86 +403,62 @@ angular.module('ang1App')
     			position:{lat:location.last_location[0],lng:location.last_location[1]},
     			icon: {
     				url:location.avatar,
-    				scaledSize: new google.maps.Size(30, 40),
-    				title: location.name
-    			}
+    				scaledSize: new google.maps.Size(30, 40)
+    			},
+  				origin: new google.maps.Point(0, 0),
+    			anchor: new google.maps.Point(0,0)
+
     		});
 	    });
-	    /*var markers = locations.map(function(location, i) {
-	        return new google.maps.Marker({
-	        	position: location,
-	        	icon: icon
-	        });
-	    });*/
-	    /*function markerClickFunction(map, marker, value){
-	    	var infowindow = new google.maps.InfoWindow({
-				content: value
-			});
-			infowindow.open(map, marker);
-	    }*/
-
 	    google.maps.event.addListener(map, 'click', function() {
 			infowindow.close();
 		});
 	    google.maps.event.addListener(infowindow, 'domready', function() {
 	    	var iwOuter = $('.gm-style-iw');
 	    	var iwBackground = iwOuter.prev();
+	    	iwBackground.parent().css({'width':'0px !important'});
 	    	iwBackground.children(':nth-child(2)').css({'display' : 'none'});
 	    	iwBackground.children(':nth-child(4)').css({'display' : 'none'});
 	    	iwOuter.parent().parent().css({left: '5px'});
-			/*iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 0 !important;'});
-	    	iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 0 !important; '});*/
-	    	iwBackground.children(':nth-child(3)').find('div').children().css({'z-index' : '1','left': '30p !important', 'background-color':'#434343'});
+			iwBackground.children(':nth-child(3)').find('div').children().css({'z-index' : '1','left': '30px !important', 'background-color':'#434343'});
 	    	var iwCloseBtn = iwOuter.next();
 	    	iwBackground.children(':nth-child(1)').css({display:'none'});
 	    	iwCloseBtn.css({display:'none'});
+		});
+		google.maps.event.addListener(infowindow, 'click', function(c) {
+			console.log(c.content);
 		});
 	    markers.map(function(marker, i) {
 	    	bounds.extend(marker.getPosition());
 	    	marker.addListener('click', function(event) {
 	    		setContent(i);
+	    		console.log(infowindow);
 		    	infowindow.open(map, marker);
+				infowindow.setContent(finalContent);
 		    });
 		    marker.addListener('mouseover',function(c){
-		    	marker.setAnimation(google.maps.Animation.BOUNCE);
+		    	if (bounce) {
+		    		marker.setAnimation(google.maps.Animation.BOUNCE);
+			    	setTimeout(function() {
+			    		marker.setAnimation(null);
+			    	}, 750);
+			    	bounce = false;
+		    	}
 		    });
 	        marker.addListener('mouseout',function(){
+		    	/*setTimeout(function() {
+		    		marker.setAnimation(null);
+		    	}, 750);*/
+		    	bounce = true;
 		    	marker.setAnimation(null);
-		    	console.log("afsdkkjfhaskljdjfh");
 	        });
 		});
-      // Add a marker clusterer to manage the markers.
-	    var markerCluster = new MarkerClusterer(map, markers,{imagePath:'/images/m', maxZoom: 15});
-	    ClusterIcon.prototype.createCss = function(pos) {
-	    	var style = [];
-			var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '10 10';
-			style.push('background-position:' + backgroundPosition + ';');
-			style.push('border-radius:50%;');
-			style.push('height:80px !important;');
-			style.push('width:80px !important;');
-			style.push('background-color: black;');
-			style.push('border:10px solid gray;');
-			style.push('text-align:center;');
-			style.push('padding-top:calc(4% - 10px);');
-			var txtColor = 'white';
-			var txtSize = 16;
-			style.push('cursor:pointer; top:' + 30 + 'px; left:' + 20 + 'px; color:' + txtColor + '; position:absolute; font-size:' + txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
-			return style.join('');
-		};
-		/*markerCluster.CALCULATOR = function (markers, numStyles) {
+		map.fitBounds(bounds);
+		var calc = function (markers, numStyles) {
 		  var index = 0;
 		  var title = "";
-		  var count = markers.length.toString();
-
-		  var valueToSum=0;
-
-		  for(var m=0;m<markers.length;m++){
-		     //This is the custom property called MyValue
-		     valueToSum+=Number(markers[m].MyValue);
-		  }
-
-		  var dv = val;
-
+		  var count = markers.length;
+		  var dv = count;
 		  while (dv !== 0) {
 		     dv = parseInt(dv / 10, 10);  //you could define your own rules
 		     index++;
@@ -472,19 +466,30 @@ angular.module('ang1App')
 
 		  index = Math.min(index, numStyles);
 		  return {
-		     text: valueToSum,
-		     index: index,
-		     title: "title"
+		     text: count + '\n<div style="font-family:Open Sans;font-weight:400;font-size: 11px;">AGENTS</div>',
+		     index: index
 		  };
-		};*/
-	    google.maps.event.addDomListener(markerCluster,'mouseover',function(){
-	    	console.log("afsdkkjfhaskljdjfh");
-	    	//console.log(element);
-          $('img[src="'+'./images/marker.png'+'"]').stop().animate({opacity:1});
-        });
-        google.maps.event.addListener(ClusterIcon,'mouseout',function(){
-          $('img[src="'+'./images/marker.png'+'"]').stop().animate({opacity:.5});
-        });
+		};
+        var markerCluster = new MarkerClusterer(map, markers,{imagePath:'/images/m', maxZoom: 15});
+		markerCluster.setCalculator(calc);
+	    ClusterIcon.prototype.createCss = function(pos) {
+	    	var style = [];
+			var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '10 10';
+			style.push('background-position:' + backgroundPosition + ';');
+			style.push('border-radius:50%;');
+			style.push('height:85px !important;');
+			style.push('width:85px !important;');
+			style.push('background-color: black;');
+			style.push('border:10px solid gray;');
+			style.push('text-align:center;');
+			style.push('padding:10px;');
+			style.push('padding-top:calc(4% - 10px);');
+			var txtColor = 'white';
+			var txtSize = 20;
+			style.push('font-family: Arial, sans-serif; line-height: 1; font-weight: 700; cursor:pointer; bottom:'+10+'px; top:' + 30 + 'px; left:' + 20 + 'px; color:' + txtColor + '; position:absolute; font-size:' + txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
+			return style.join('');
+		};
+		console.log(ClusterIcon.prototype);
     }
     var locations = [
     	{
